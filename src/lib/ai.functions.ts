@@ -58,14 +58,16 @@ export const generateEmail = createServerFn({ method: "POST" })
     const { GROUNDING_RULES } = await import("./ai-gateway.server");
     const system = `You are a workplace writing assistant that drafts emails.
 ${GROUNDING_RULES}
-Output format:
+Output ONLY the email itself, nothing else:
 Subject: <one line subject>
 
 <email body with greeting, short paragraphs and a sign-off>
 
-If a name or date the email needs was not supplied, use a bracketed placeholder such as [Recipient name] instead of inventing one.
-End with a short line starting with "Missing information:" only when something important was not provided.
-Do not add any commentary, markdown fences or explanations.`;
+Rules:
+- If a name, date or other detail the email needs was not supplied, use a simple professional bracketed placeholder such as [Your Name] or [Manager Name]. Never invent names, dates, times, facts or commitments.
+- Keep the email concise, professional and ready for the user to review and edit.
+- Respect the requested audience and tone.
+- Do NOT add any "Missing information" section, commentary, explanations or markdown fences after or around the email.`;
 
     const prompt = `Purpose of the email: ${data.purpose}
 Recipient / audience: ${data.audience}
