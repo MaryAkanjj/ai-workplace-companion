@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
 function Dashboard() {
   return (
     <AppLayout>
-      <section className="grid items-center gap-10 pt-14 pb-10 lg:grid-cols-[1.1fr_1fr]">
+      <section className="grid items-center gap-10 pt-14 pb-16 lg:grid-cols-[1.1fr_1fr]">
         <div>
           <div className="glass text-inksoft inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium">
             <span className="bg-mint size-1.5 rounded-full" /> AI Workplace Assistant
@@ -71,7 +71,7 @@ function Dashboard() {
               </span>
             </div>
           </div>
-          <div className="glass absolute -bottom-6 -left-5 w-52 rounded-2xl p-4 shadow-lg">
+          <div className="glass absolute -bottom-12 -left-4 w-52 rounded-2xl p-4 shadow-lg">
             <div className="flex items-center gap-2 text-xs font-semibold">
               <span className="bg-mint size-2 rounded-full" /> Meeting summary
             </div>
