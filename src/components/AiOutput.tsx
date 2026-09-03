@@ -55,9 +55,14 @@ export function FormattedOutput({ text }: { text: string }) {
     if (line.startsWith("## ")) {
       blocks.push({ heading: line.slice(3).trim(), lines: [] });
     } else if (line.trim()) {
-      if (blocks.length === 0) blocks.push({ heading: null, lines: [] });
-      blocks[blocks.length - 1].lines.push(line.trim());
+      let current = blocks[blocks.length - 1];
+      if (!current) {
+        current = { heading: null, lines: [] };
+        blocks.push(current);
+      }
+      current.lines.push(line.trim());
     }
+
   }
 
   return (
